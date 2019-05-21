@@ -42,34 +42,29 @@ player.move(start);
 
 
 
-// // Create the function
-// let jumpaction = /jump/;
-// let jump = function(action, player, object) {
-//   if (action == 'jump') {
-//     addLine('You jump. As you land, you hear a loud creak from the floor.');
-//   }
-//   return player
-// }
-//
-// //To create a function that interacts with an object...
-// let eatAction = /eat/;
-// let eat = function(testingtubes) {
-//   if (action == 'eat') {
-//     object.eat();
-//   }
-//   return player;
-// }
-//
-// //... then add a method to an object. This only works for the one object.
-// testingtubes.eat = function() {
-//   addLine("You ate the " + this.name)
-// }
-//
-// // You can also extend the class, adding an eat() method to all items in your game.
-// Item.prototype.eat = function () {
-//   addLine("You ate the " + this.name);
-// }
-//
-// //Add the function to the action list
-// addAction(jumpaction, jump);
-// addAction(eatAction, eat);
+
+
+let jumpaction = /jump/;
+let jump = function(action, player, object) {
+  if (action == 'jump') {
+    let text = "";
+    addLine("You jumped. What did you think would happen? Dummy.");
+    player.move(dungeon)
+    player.cameFrom = null;
+  }
+  return player
+}
+addAction(jumpaction, jump);
+
+
+let killaction = /kill/;
+let kill = function(action, player, object) {
+  if (action == '/kill') {
+    let text = '';
+    addLine("This isn't Minecraft, but good try though!")
+    player.move(dungeon)
+    player.cameFrom = null;
+  }
+  return player
+}
+addAction(killaction, kill)
